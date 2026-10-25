@@ -1,0 +1,13 @@
+services:
+  bludit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bludit
+    ports:
+      - "${BLUDIT_PORT:-8000}:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - BLUDIT_PORT=${BLUDIT_PORT:-8000}
+    restart: unless-stopped
