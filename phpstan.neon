@@ -1,0 +1,18 @@
+parameters:
+    level: 5
+    phpVersion: 70400
+    paths:
+        - bl-kernel
+        - bl-plugins
+        - index.php
+        - install.php
+    scanDirectories:
+        - bl-content
+        - bl-kernel
+        - bl-languages
+        - bl-plugins
+        - bl-themes
+    ignoreErrors:
+        - identifier: constant.notFound
+        - identifier: array.duplicateKey
+        - identifier: variable.undefined

@@ -1,0 +1,6 @@
+FROM ghcr.io/phpstan/phpstan:2
+
+RUN composer global config allow-plugins.phpstan/extension-installer true \
+    && composer global require --no-progress \
+        phpstan/extension-installer \
+        nth-root/phpstan-security
