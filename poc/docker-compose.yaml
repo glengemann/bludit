@@ -1,0 +1,10 @@
+services:
+  php:
+    build:
+      context: .
+      pull: true
+    network_mode: none
+    working_dir: /workspace
+    volumes:
+      - .:/workspace:ro
+    command: ["php", "--version"]
