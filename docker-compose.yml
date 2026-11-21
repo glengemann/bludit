@@ -11,3 +11,26 @@ services:
     environment:
       - BLUDIT_PORT=${BLUDIT_PORT:-8000}
     restart: unless-stopped
+
+  trivy:
+    image: aquasec/trivy:latest
+    container_name: bludit-trivy
+    profiles:
+      - security
+    volumes:
+      - ./bl-content:/project/bl-content:ro
+      - ./bl-kernel:/project/bl-kernel:ro
+      - ./bl-languages:/project/bl-languages:ro
+      - ./bl-plugins:/project/bl-plugins:ro
+      - ./bl-themes:/project/bl-themes:ro
+      - trivy-cache:/root/.cache/
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    working_dir: /project
+    command:
+      - fs
+      - --scanners
+      - vuln,misconfig,secret
+      - /project
+
+volumes:
+  trivy-cache:
